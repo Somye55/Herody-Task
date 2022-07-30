@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
-const User = require('./Schema/User')
-const URI = 'mongodb+srv://username:pass1@assignment-1.ifyy1.mongodb.net/?retryWrites=true&w=majority'
+const User = require('./Schema/User');
+require('dotenv').config();
+const URI = process.env.MONGO_URI
 
 
 const connectToMongo=async ()=>{
     try {
-        await mongoose.connect('mongodb+srv://username:pass1@assignment-1.ifyy1.mongodb.net/?retryWrites=true&w=majority');
+        await mongoose.connect(URI);
         console.log(`connected to mongo at ${URI}!`)
       } catch (error) {
        console.log("some error:",error);
